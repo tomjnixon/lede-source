@@ -102,6 +102,12 @@ define Device/lantiqFullImage
   IMAGE/fullimage.img := fullimage | check-size $$$$(IMAGE_SIZE)
 endef
 
+define Device/netgearDniImage
+  IMAGES := sysupgrade.bin factory.img
+  IMAGE/factory.img := $$(IMAGE/sysupgrade.bin) | netgear-dni
+endef
+DEVICE_VARS += NETGEAR_BOARD_ID NETGEAR_HW_ID
+
 define Device/AVM
   KERNEL := kernel-bin | append-dtb | lzma | eva-image
 endef
@@ -487,6 +493,15 @@ define Device/BTHOMEHUBV5A
 	kmod-ath10k ath10k-firmware-qca988x wpad-mini kmod-usb-dwc2
 endef
 TARGET_DEVICES += BTHOMEHUBV5A
+
+define Device/DM200
+  $(Device/netgearDniImage)
+  IMAGE_SIZE := 7232k
+  DEVICE_TITLE := Netgear DM200
+  NETGEAR_BOARD_ID := DM200
+  NETGEAR_HW_ID := 29765233+8+0+64+0+0
+endef
+TARGET_DEVICES += DM200
 
 define Device/EASY80920NAND
   $(Device/lantiqFullImage)
