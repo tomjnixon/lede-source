@@ -93,6 +93,11 @@ DGN3500*)
 		"0:lan:4" "1:lan:3" "2:lan:2" "3:lan:1" "5t@eth0"
 	;;
 
+DM200)
+	lan_mac=$(mtd_get_mac_ascii dniconfig lan_factory_mac)
+	wan_mac=$(mtd_get_mac_ascii dniconfig wan_factory_mac)
+	ucidef_set_interface_lan 'eth0'
+
 EASY80920NAND|EASY80920NOR)
 	lan_mac=$(mtd_get_mac_ascii uboot_env ethaddr)
 	wan_mac=$(macaddr_add "$lan_mac" 1)
