@@ -94,8 +94,8 @@ DGN3500*)
 	;;
 
 DM200)
-	lan_mac=$(mtd_get_mac_ascii dniconfig lan_factory_mac)
-	wan_mac=$(mtd_get_mac_ascii dniconfig wan_factory_mac)
+	lan_mac=$(mtd_get_mac_binary ART 0)
+	wan_mac=$(macaddr_add "$lan_mac" 1)
 	ucidef_set_interface_lan 'eth0'
 	;;
 
