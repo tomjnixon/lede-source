@@ -144,26 +144,8 @@
             };
 
             partition@30000 {
-                reg = <0x30000 0x710000>;
+                reg = <0x30000 0x7b0000>;
                 label = "firmware";
-            };
-
-            partition@740000 {
-                reg = <0x740000 0x10000>;
-                label = "dniconfig";
-                read-only;
-            };
-
-            partition@750000 {
-                reg = <0x750000 0x10000>;
-                label = "log";
-                read-only;
-            };
-
-            partition@760000 {
-                reg = <0x760000 0x80000>;
-                label = "language";
-                read-only;
             };
 
             partition@7e0000 {
