@@ -36,6 +36,16 @@
                     lantiq,groups = "mdio";
                     lantiq,function = "mdio";
                 };
+                conf_out {
+                    lantiq,pins = "io12", "io15", /* annexa, annexb */
+                        // these were also in the original firmware, but possibly aren't required?
+                        "io10", "io17", "io18", "io22", /* spi */
+                        "io21", "io38", /* pcie */
+                        "io0", "io1", "io8", "io11", "io33", "io34", "io35", "io36"; /* led */
+                    lantiq,open-drain;
+                    lantiq,pull = <0>;
+                    lantiq,output = <1>;
+                };
             };
 
             pins_spi_default: pins_spi_default {
