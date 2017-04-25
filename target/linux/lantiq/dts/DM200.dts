@@ -14,9 +14,9 @@
     };
 
     aliases {
-        led-boot = &power_amber;
-        led-failsafe = &power_green;
-        led-running = &power_amber;
+        led-boot = &power_green;
+        led-failsafe = &power_amber;
+        led-running = &power_green;
 
         led-internet = &dsl_green;
         led-dsl = &dsl_amber;
