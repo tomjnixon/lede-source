@@ -33,12 +33,6 @@
 					lantiq,groups = "mdio";
 					lantiq,function = "mdio";
 				};
-				conf_out {
-					lantiq,pins = "io12", "io15";  // annexa, annexb
-					lantiq,open-drain;
-					lantiq,pull = <0>;
-					lantiq,output = <1>;
-				};
 			};
 
 			pins_spi_default: pins_spi_default {
@@ -74,6 +68,22 @@
 			label = "reset";
 			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
+		};
+	};
+
+	gpio_export {
+		compatible = "gpio-export";
+		#size-cells = <0>;
+
+		annexa {
+			gpio-export,name = "annexa";
+			gpio-export,output = <1>;
+			gpios = <&gpio 12 GPIO_ACTIVE_HIGH>;
+		};
+		annexb {
+			gpio-export,name = "annexb";
+			gpio-export,output = <1>;
+			gpios = <&gpio 15 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
