@@ -7,5 +7,16 @@ for mod in $LOAD; do
 	grep -q "$mod " /proc/modules || insmod "$mod"
 done
 
+for annex_gpio in a b; do
+	gpio_file="/sys/class/gpio/annex$annex_gpio/value"
+	if [ -f "$gpio_file" ]; then
+		if [ "$ANNEX" = "$annex_gpio" ]; then
+			echo 1 > "$gpio_file"
+		else
+			echo 0 > "$gpio_file"
+		fi
+	fi
+done
+
 esi $(printf '%012X' $((1+0x$(tr -d : </sys/class/net/eth0/address))))
 exec /sbin/vdsl_cpe_control "$@"

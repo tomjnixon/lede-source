@@ -294,7 +294,7 @@ start_service() {
 			$lowlevel \
 			-M ${mode} \
 			$autoboot
-	procd_append_param env "LOAD=$LOAD" "UNLOAD=$UNLOAD"
+	procd_append_param env "LOAD=$LOAD" "UNLOAD=$UNLOAD" "ANNEX=$annex"
 	procd_close_instance
 }
 
